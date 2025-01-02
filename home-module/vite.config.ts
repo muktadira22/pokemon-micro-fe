@@ -10,16 +10,17 @@ export default defineConfig(() => ({
   plugins: [
     react(),
     federation({
-      name: "hostApp",
-      remotes: {
-        homePageModule: "http://localhost:5001/assets/homepageModule.js",
+      name: "homePageModule",
+      filename: "homePageModule.js",
+      exposes: {
+        "./Home": "./src/components/Home",
       },
       shared: ["react", "react-dom"],
     }),
   ],
   preview: {
     host: "localhost",
-    port: 5000,
+    port: 5001,
     strictPort: true,
   },
   build: {
